@@ -17,6 +17,10 @@ security:
     name: admin
     password: admin
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8090/eureka/
 #eureka:
 #  instance:
 #    hostname: registry

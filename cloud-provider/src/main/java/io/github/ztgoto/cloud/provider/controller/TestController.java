@@ -1,6 +1,9 @@
 package io.github.ztgoto.cloud.provider.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +15,9 @@ public class TestController {
 	@Value("${server.port}")
 	Integer port;
 	
+	@Resource
+	Environment environment;
+	
 	@RequestMapping("/hello")
 	public String hello(@RequestParam("name") String name){
 		return "hello:"+name+":"+port;
@@ -22,5 +28,12 @@ public class TestController {
 		Thread.sleep(2000);
 		return "hystirx:"+message+":"+port;
 	}
+	
+	@RequestMapping("/config")
+	public String config(@RequestParam("key") String key){
+		return environment.getProperty(key);
+	}
+	
+	
 
 }

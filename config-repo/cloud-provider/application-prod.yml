@@ -8,7 +8,15 @@
 # ===================================================================
 
 logging:
-  config: "file:../config/log4j2.xml"
+  config: "https://raw.githubusercontent.com/ztgoto/spring-cloud-sample/master/config-repo/cloud-provider/log4j2-prod.xml"
+  
+server:
+  port: 8100
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8090/eureka/
 
 test:
   message: "provier prod profile"
