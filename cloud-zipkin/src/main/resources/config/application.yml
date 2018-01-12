@@ -6,12 +6,10 @@
 # Full reference is available at:
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
-
 logging:
-  config: "https://raw.githubusercontent.com/ztgoto/spring-cloud-sample/master/config-repo/cloud-provider/log4j2-local.xml"
+  config: "classpath:config/log4j2.xml"
   
 server:
-  port: 8100
+  port: 8140
+  
 
-test:
-  message: "provier local profile"

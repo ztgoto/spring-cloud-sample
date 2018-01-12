@@ -2,8 +2,3 @@ spring:
   application:
 #    index: config
     name: cloud-provider
-  cloud:
-    config:
-#      label: master
-#      profile: dev
-      uri: "http://127.0.0.1:8080"

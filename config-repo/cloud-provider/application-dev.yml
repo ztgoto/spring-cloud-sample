@@ -13,10 +13,5 @@ logging:
 server:
   port: 8100
   
-eureka:
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:8090/eureka/
-
 test:
   message: "provier dev profile"

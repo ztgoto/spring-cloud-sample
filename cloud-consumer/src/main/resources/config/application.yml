@@ -43,5 +43,7 @@ hystrix:
           thread:
             timeoutInMilliseconds: 3000
 
-   
+spring:
+  zipkin:
+    base-url: http://127.0.0.1:8140 
 

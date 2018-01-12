@@ -10,7 +10,7 @@ logging:
   config: "classpath:config/log4j2.xml"
   
 server:
-  port: 8130
+  port: 8140
   
 eureka:
   client:
