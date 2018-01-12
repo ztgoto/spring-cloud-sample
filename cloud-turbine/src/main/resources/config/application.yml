@@ -1,0 +1,26 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+logging:
+  config: "classpath:config/log4j2.xml"
+  
+server:
+  port: 8120
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8090/eureka/
+
+
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: cloud-consumer
+  clusterNameExpression: "'default'"
+

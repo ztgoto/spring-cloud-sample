@@ -1,0 +1,30 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+logging:
+  config: "classpath:config/log4j2.xml"
+  
+server:
+  port: 8130
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8090/eureka/
+
+
+zuul:
+  routes:
+    test:
+      path: "/test/**"
+      serviceId: cloud-consumer
+      stripPrefix: false
+    swagger:
+      path: "/swagger/**"
+      url: "http://127.0.0.1:9119"
+      stripPrefix: false

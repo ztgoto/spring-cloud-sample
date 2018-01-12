@@ -1,0 +1,14 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+  config: "file:../config/log4j2.xml"
+
+test:
+  message: "provier prod profile"

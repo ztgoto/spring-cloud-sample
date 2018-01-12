@@ -1,0 +1,32 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+logging:
+  config: "classpath:config/log4j2.xml"
+  
+server:
+  port: 8090
+  
+security:
+  user:
+    name: admin
+    password: admin
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+#    metadata-map:
+#      user.name: ${security.user.name}
+#      user.password: ${security.user.password}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
