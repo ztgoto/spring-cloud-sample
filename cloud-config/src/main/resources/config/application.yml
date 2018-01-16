@@ -7,15 +7,15 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 logging:
-  config: "classpath:config/log4j2.xml"
+  config: "@logging.config@"
   
 server:
   port: 8080
   
-security:
-  user:
-    name: admin
-    password: admin
+#security:
+#  user:
+#    name: admin
+#    password: admin
 
 eureka:
   instance:
@@ -46,7 +46,7 @@ spring:
         git:
           uri: "https://github.com/ztgoto/spring-cloud-sample"
           force-pull: true
-          search-paths: "config-repo/{application}"
+          search-paths: "config-repo/{application}/{profile}"
 #          username: ""
 #          password: ""
 #          repos:

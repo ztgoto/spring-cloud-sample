@@ -8,6 +8,9 @@ LOG_DIR=${logging.path}
 APP_NAME="${project.build.finalName}.${project.packaging}"
 # SERVER_PORT="${equipment.server.port}"
 PID_FILE="${runtime.pidfile}"
+
+PROFILES=${spring.profiles.active}
+
 DEBUG_PARAM=""
 
 GC_PARAM=""
@@ -71,7 +74,7 @@ fi
 
 echo -e "Starting the $APP_NAME ...\n"
 # nohup java $DEBUG_PARAM $GC_PARAM $JAVA_MEM_OPTS -jar $APP_DIR/$APP_NAME --spring.config.location=$CONFIG_FILE > /dev/null 2>&1 & 
-nohup java $DEBUG_PARAM $GC_PARAM $JAVA_MEM_OPTS -jar $APP_DIR/$APP_NAME > /dev/null 2>&1 &   
+nohup java $DEBUG_PARAM $GC_PARAM $JAVA_MEM_OPTS -jar $APP_DIR/$APP_NAME --spring.profiles.active=$PROFILES > /dev/null 2>&1 &   
 
 
 PIDS=`ps -f | grep java | grep "$APP_NAME" | awk '{print $2}'`

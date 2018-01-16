@@ -7,15 +7,15 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 logging:
-  config: "classpath:config/log4j2.xml"
+  config: "@logging.config@"
   
 server:
   port: 8090
   
-security:
-  user:
-    name: admin
-    password: admin
+#security:
+#  user:
+#    name: admin
+#    password: admin
 
 eureka:
   instance:
