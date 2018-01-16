@@ -8,7 +8,7 @@
 # ===================================================================
 
 logging:
-  config: "https://raw.githubusercontent.com/ztgoto/spring-cloud-sample/master/config-repo/cloud-provider/log4j2-prod.xml"
+  config: "https://raw.githubusercontent.com/ztgoto/spring-cloud-sample/master/config-repo/cloud-provider/prod/log4j2.xml"
   
 server:
   port: 8100
