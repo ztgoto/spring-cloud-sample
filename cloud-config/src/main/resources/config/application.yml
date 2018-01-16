@@ -18,9 +18,16 @@ security:
     password: admin
 
 eureka:
+  instance:
+#    instanceId: testId1
+    metadata-map:
+      instanceId: abc123456
+      zone: zone1
+      test.meta: abc123
   client:
     service-url:
       defaultZone: http://127.0.0.1:8090/eureka/
+#    preferSameZoneEureka: true
 #eureka:
 #  instance:
 #    hostname: registry

@@ -18,6 +18,8 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 		<skip_maven_deploy>false</skip_maven_deploy>
 		<project.jdk.version>1.8</project.jdk.version>
+		<resource.delimiter>@</resource.delimiter>
+		<runtime.pidfile>./pid</runtime.pidfile>
 
 		<!-- lib -->
 		<spring.cloud.build.version>1.3.6.RELEASE</spring.cloud.build.version>
@@ -109,9 +111,9 @@
 				<version>1.3.0.RELEASE</version>
 			</dependency>
 			<dependency>
-			    <groupId>org.springframework.cloud</groupId>
-			    <artifactId>spring-cloud-starter-zipkin</artifactId>
-			    <version>1.3.0.RELEASE</version>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-zipkin</artifactId>
+				<version>1.3.0.RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -119,14 +121,14 @@
 				<version>1.3.0.RELEASE</version>
 			</dependency>
 			<dependency>
-			    <groupId>io.zipkin.java</groupId>
-			    <artifactId>zipkin-server</artifactId>
-			    <version>2.4.3</version>
+				<groupId>io.zipkin.java</groupId>
+				<artifactId>zipkin-server</artifactId>
+				<version>2.4.3</version>
 			</dependency>
 			<dependency>
-			    <groupId>io.zipkin.java</groupId>
-			    <artifactId>zipkin-autoconfigure-ui</artifactId>
-			    <version>2.4.3</version>
+				<groupId>io.zipkin.java</groupId>
+				<artifactId>zipkin-autoconfigure-ui</artifactId>
+				<version>2.4.3</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -141,6 +143,8 @@
 
 			<properties>
 				<spring.profiles.active>local</spring.profiles.active>
+				<!-- <spring.config.location>classpath:/,classpath:/config/,file:./,file:./config/</spring.config.location> -->
+				<logging.path>./logs</logging.path>
 			</properties>
 		</profile>
 
@@ -149,6 +153,7 @@
 
 			<properties>
 				<spring.profiles.active>dev</spring.profiles.active>
+				<logging.path>../logs</logging.path>
 			</properties>
 
 		</profile>
@@ -158,6 +163,7 @@
 
 			<properties>
 				<spring.profiles.active>test</spring.profiles.active>
+				<logging.path>../logs</logging.path>
 			</properties>
 		</profile>
 
@@ -166,6 +172,7 @@
 
 			<properties>
 				<spring.profiles.active>fast</spring.profiles.active>
+				<logging.path>../logs</logging.path>
 			</properties>
 		</profile>
 
@@ -174,11 +181,24 @@
 
 			<properties>
 				<spring.profiles.active>prod</spring.profiles.active>
+				<logging.path>../logs</logging.path>
 			</properties>
 		</profile>
 	</profiles>
 
 	<build>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -216,12 +236,53 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<encoding>${project.build.encoding}</encoding>
 					<source>${project.jdk.version}</source>
 					<target>${project.jdk.version}</target>
 					<compilerVersion>${project.jdk.version}</compilerVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+					<!-- <layout>ZIP</layout> -->
+					<arguments>
+						<argument>--spring.profiles.active=${spring.profiles.active}</argument>
+					</arguments>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptors>
+						<descriptor>${basedir}/src/main/assembly/config/assembly.xml</descriptor>
+					</descriptors>
+					<encoding>${project.build.encoding}</encoding>
+					<appendAssemblyId>false</appendAssemblyId>
+					<finalName>${project.artifactId}-${project.version}-${maven.build.timestamp}</finalName>
 				</configuration>
 			</plugin>
 		</plugins>
