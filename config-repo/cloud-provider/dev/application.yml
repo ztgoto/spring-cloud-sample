@@ -13,7 +13,6 @@ logging:
 server:
   port: 8100
 
-
 spring:
   cloud:
     config:
