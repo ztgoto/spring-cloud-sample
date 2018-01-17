@@ -11,7 +11,7 @@ logging:
   config: "https://raw.githubusercontent.com/ztgoto/spring-cloud-sample/master/config-repo/cloud-consumer/dev/log4j2.xml"
   
 server:
-  port: 8100
+  port: 8110
 
 management:
   security:
