@@ -1,0 +1,36 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+logging:
+  config: "@logging.config@"
+  
+server:
+  port: 8140
+      
+management:
+  security:
+    enabled: false
+  
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin
+
+
+zuul:
+  routes:
+    test:
+      path: "/test/**"
+      serviceId: cloud-consumer
+      stripPrefix: false
+    swagger:
+      path: "/swagger/**"
+      url: "http://127.0.0.1:9119"
+      stripPrefix: false
