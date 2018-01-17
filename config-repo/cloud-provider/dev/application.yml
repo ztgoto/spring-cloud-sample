@@ -13,6 +13,17 @@ logging:
 server:
   port: 8100
 
+management:
+  security:
+    enabled: false
+  
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin
+
 spring:
   cloud:
     config:
