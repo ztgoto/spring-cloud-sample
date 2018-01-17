@@ -7,7 +7,7 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 logging:
-  config: "classpath:config/log4j2.xml"
+  config: "@logging.config@"
   
 server:
   port: 8110
@@ -16,6 +16,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8090/eureka/
+      
+management:
+  security:
+    enabled: false
+  
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin
 
 #hystrix.threadpool.TestHystrix.coreSize=15
 #hystrix.threadpool.TestHystrix.maxQueueSize=50

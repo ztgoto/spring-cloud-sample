@@ -15,6 +15,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<start-class>io.github.ztgoto.cloud.provider.Run</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
