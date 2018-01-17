@@ -2,6 +2,8 @@
 <Configuration status="OFF">
 	<Properties>
 		<property name="LogPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</property>
+        <property name="LogPath">./logs</property>
+        <property name="DefaultLevel">DEBUG</property>
 	</Properties>  
     <Appenders>  
         <!-- 输出到控制台 -->  
@@ -20,7 +22,7 @@
         
         
         <!-- 输出错误日志到文件 --> 
-        <RollingFile name="FILE" fileName="./logs/catalina.log" filePattern="./logs/catalina.%d{yyyy-MM-dd}.log" append="true">  
+        <RollingFile name="FILE" fileName="${LogPath}/catalina.log" filePattern="${LogPath}/catalina.%d{yyyy-MM-dd}.log" append="true">  
 	        <!-- 输出格式 -->    
 	        <PatternLayout pattern="${LogPattern}"/>  
 	        <!-- 设置策略 -->  
@@ -39,16 +41,16 @@
 	    </RollingFile>
     </Appenders>  
     <Loggers>  
-        <Root level="DEBUG"> <!-- 全局配置 -->  
+        <Root level="${DefaultLevel}"> <!-- 全局配置 -->  
             <AppenderRef ref="Console" />
-            <!-- <AppenderRef ref="FILE" /> -->
+            <AppenderRef ref="FILE" />
             <!-- <AppenderRef ref="KAFKA"/> -->
         </Root>  
         
         <!-- <Logger name="org.apache.kafka" level="DEBUG" /> --> <!-- avoid recursive logging -->  
-        <Logger name="org.springframework" level="DEBUG" />
+        <Logger name="org.springframework" level="${DefaultLevel}" />
         
-        <Logger name="io.github.ztgoto" level="DEBUG" />
+        <Logger name="io.github.ztgoto" level="INFO" />
         
     </Loggers>  
 </Configuration>
