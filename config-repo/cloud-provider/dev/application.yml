@@ -13,12 +13,11 @@ logging:
 server:
   port: 8100
 
+
 spring:
   cloud:
     config:
       overrideSystemProperties: false
-
-spring:
   zipkin:
     base-url: http://127.0.0.1:8140
   
