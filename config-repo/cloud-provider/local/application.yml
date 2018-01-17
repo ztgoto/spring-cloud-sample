@@ -29,7 +29,7 @@ spring:
     config:
       overrideSystemProperties: false
   zipkin:
-    base-url: http://127.0.0.1:8140
+    base-url: http://cloud-zipkin
 
 test:
   message: "provier local profile"
