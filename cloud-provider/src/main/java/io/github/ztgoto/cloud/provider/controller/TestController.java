@@ -3,16 +3,16 @@ package io.github.ztgoto.cloud.provider.controller;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netflix.discovery.DiscoveryClient;
-
 @RestController
 @RequestMapping("/test")
+@RefreshScope
 public class TestController {
 	
 	@Value("${server.port}")
@@ -40,7 +40,7 @@ public class TestController {
 		return environment.getProperty(key);
 	}
 	
-	
+
 	@RequestMapping("/serviceInfo")
 	public Object serviceInfo(@RequestParam("serviceId") String serviceId){
 		return discoveryClient.getInstances(serviceId);

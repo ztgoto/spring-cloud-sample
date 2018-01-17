@@ -12,12 +12,19 @@ logging:
 server:
   port: 8090
   
-#security:
-#  user:
-#    name: admin
-#    password: admin
+management:
+  security:
+    enabled: false
+  
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin
 
 eureka:
+  environment: "@spring.profiles.active@"
   instance:
     hostname: 127.0.0.1
     prefer-ip-address: true
