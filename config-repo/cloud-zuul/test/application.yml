@@ -28,6 +28,8 @@ spring:
   cloud:
     config:
       overrideSystemProperties: false
+  zipkin:
+    base-url: http://cloud-zipkin/
 
 zuul:
   routes:
