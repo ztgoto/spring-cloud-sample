@@ -11,7 +11,7 @@ logging:
   config: "https://raw.githubusercontent.com/ztgoto/spring-cloud-sample/master/config-repo/cloud-zuul/fast/log4j2.xml"
   
 server:
-  port: 8140
+  port: 8130
 
 management:
   security:

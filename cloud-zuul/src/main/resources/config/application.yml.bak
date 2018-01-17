@@ -10,7 +10,7 @@ logging:
   config: "@logging.config@"
   
 server:
-  port: 8140
+  port: 8130
       
 management:
   security:
