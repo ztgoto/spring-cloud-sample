@@ -1,0 +1,55 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+logging:
+  config: "@logging.config@"
+  
+server:
+  port: 8110
+      
+management:
+  security:
+    enabled: false
+  
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin
+
+#hystrix.threadpool.TestHystrix.coreSize=15
+#hystrix.threadpool.TestHystrix.maxQueueSize=50
+#hystrix.threadpool.TestHystrix.queueSizeRejectionThreshold=10
+#hystrix.command.command1.execution.isolation.thread.timeoutInMilliseconds=2000
+#hystrix.command.command1.circuitBreaker.sleepWindowInMilliseconds=10000
+#hystrix.command.command1.circuitBreaker.errorThresholdPercentage=50
+
+      
+feign:
+  hystrix:
+    enabled: true
+
+
+hystrix:
+  threadpool:
+    TestHystrix:
+      coreSize: 5
+    cloud-provider:
+      coreSize: 5
+  command:
+    ribbonHystrixMessage:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+
+spring:
+  zipkin:
+    base-url: http://127.0.0.1:8140 
+

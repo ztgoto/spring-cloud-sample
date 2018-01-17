@@ -2,3 +2,16 @@ spring:
   application:
 #    index: config
     name: cloud-consumer
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: cloud-config
+#      label: master
+#      profile: dev
+#      uri: "http://127.0.0.1:8080"
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8090/eureka/

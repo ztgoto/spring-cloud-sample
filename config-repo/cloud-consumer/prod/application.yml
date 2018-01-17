@@ -1,0 +1,58 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+  config: "https://raw.githubusercontent.com/ztgoto/spring-cloud-sample/master/config-repo/cloud-consumer/prod/log4j2.xml"
+  
+server:
+  port: 8100
+
+management:
+  security:
+    enabled: false
+  
+security:
+  basic:
+    enabled: false
+  user:
+    name: "{cipher}706e1f23e5bebe774ec36c792308fb442f5c70c8460d041eaddbd1b89a3efc5b" # key:fFR1yf_8mPK9PGIM9Z63AA value:admin
+    password: "{cipher}706e1f23e5bebe774ec36c792308fb442f5c70c8460d041eaddbd1b89a3efc5b" # key:fFR1yf_8mPK9PGIM9Z63AA value:admin
+
+#hystrix.threadpool.TestHystrix.coreSize=15
+#hystrix.threadpool.TestHystrix.maxQueueSize=50
+#hystrix.threadpool.TestHystrix.queueSizeRejectionThreshold=10
+#hystrix.command.command1.execution.isolation.thread.timeoutInMilliseconds=2000
+#hystrix.command.command1.circuitBreaker.sleepWindowInMilliseconds=10000
+#hystrix.command.command1.circuitBreaker.errorThresholdPercentage=50
+
+      
+feign:
+  hystrix:
+    enabled: true
+
+
+hystrix:
+  threadpool:
+    TestHystrix:
+      coreSize: 5
+    cloud-provider:
+      coreSize: 5
+  command:
+    ribbonHystrixMessage:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+
+spring:
+  cloud:
+    config:
+      overrideSystemProperties: false
+  zipkin:
+    base-url: http://127.0.0.1:8140
