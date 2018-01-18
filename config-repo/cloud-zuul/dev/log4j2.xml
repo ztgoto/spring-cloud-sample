@@ -3,7 +3,7 @@
 	<Properties>
 		<property name="LogPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</property>
         <property name="LogPath">../logs</property>
-        <property name="DefaultLevel">DEBUG</property>
+        <property name="DefaultLevel">ERROR</property>
 	</Properties>  
     <Appenders>  
         <!-- 输出到控制台 -->  
