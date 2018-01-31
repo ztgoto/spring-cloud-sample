@@ -1,0 +1,33 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+  config: "https://raw.githubusercontent.com/ztgoto/spring-cloud-sample/master/config-repo/cloud-auth/dev/log4j2.xml"
+  
+server:
+  port: 8150
+
+management:
+  security:
+    enabled: false
+  
+security:
+  basic:
+    enabled: false
+  user:
+    name: "{cipher}706e1f23e5bebe774ec36c792308fb442f5c70c8460d041eaddbd1b89a3efc5b" # key:fFR1yf_8mPK9PGIM9Z63AA value:admin
+    password: "{cipher}706e1f23e5bebe774ec36c792308fb442f5c70c8460d041eaddbd1b89a3efc5b" # key:fFR1yf_8mPK9PGIM9Z63AA value:admin
+
+
+spring:
+  cloud:
+    config:
+      overrideSystemProperties: false
+  zipkin:
+    base-url: http://cloud-zipkin/
