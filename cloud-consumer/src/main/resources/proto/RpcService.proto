@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package protobuf.services;
+
+option java_generic_services = false;
+
+option java_package = "io.github.ztgoto.grpc.services";
+option java_outer_classname = "AuthRpcServiceFactory";
+option java_multiple_files = true;
+option objc_class_prefix = "HLW";
+
+option go_package = "rpc/services";
+
+import "RequestMessage.proto";
+import "ResponseMessage.proto";
+
+service AuthRpcService {
+	rpc check(protobuf.messages.RequestMessage) returns (protobuf.messages.ResponseMessage);
+}
