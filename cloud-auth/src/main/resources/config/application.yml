@@ -1,0 +1,60 @@
+# ===================================================================
+# Spring Boot configuration.
+# ===================================================================
+
+# ===================================================================
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+jdbc:
+  enabled: false
+  dsConfigList:
+    - url: "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&allowMultiQueries=true"
+      driverClassName: "com.mysql.jdbc.Driver"
+      username: "root"
+      password: "root"
+      dataSourceName: "master"
+      initialSize: 5
+      minIdle: 5
+      maxActive: 100
+      maxWait: 30000
+      maxWaitThreadCount: -1
+      testWhileIdle: true
+      validationQuery: "select 1;"
+    - url: "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&allowMultiQueries=true"
+      driverClassName: "com.mysql.jdbc.Driver"
+      username: "root"
+      password: "root"
+      dataSourceName: "slave1"
+      initialSize: 5
+      minIdle: 5
+      maxActive: 100
+      maxWait: 30000
+      maxWaitThreadCount: -1
+      testWhileIdle: true
+      validationQuery: "select 1;"
+    - url: "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&allowMultiQueries=true"
+      driverClassName: "com.mysql.jdbc.Driver"
+      username: "root"
+      password: "root"
+      dataSourceName: "slave2"
+      initialSize: 5
+      minIdle: 5
+      maxActive: 100
+      maxWait: 30000
+      maxWaitThreadCount: -1
+      testWhileIdle: true
+      validationQuery: "select 1;"
+  masterName: "master"
+  slaveNames: ["slave1","slave2"]
+  
+spring:
+  redis:
+    sharding:
+      - host: "192.168.4.117"
+        port: 6379
+#        password: "123456"
+      - host: "192.168.4.117"
+        port: 6379
+  
