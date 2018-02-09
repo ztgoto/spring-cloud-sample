@@ -3,11 +3,12 @@ package io.github.ztgoto.cloud.auth.configure;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import redis.clients.jedis.Protocol;
 
-public class ShardingRedisProperties extends RedisProperties {
+@ConfigurationProperties(prefix = "spring.redis")
+public class ShardedRedisProperties {
 	
 	private List<ShardingInfo> sharding = new ArrayList<ShardingInfo>();
 	
@@ -17,7 +18,6 @@ public class ShardingRedisProperties extends RedisProperties {
 
 	public static class ShardingInfo {
 		private String host;
-		private int port = 6379;
 		private String passowrd;
 		private int timeout = Protocol.DEFAULT_TIMEOUT;
 		public String getHost() {
@@ -25,12 +25,6 @@ public class ShardingRedisProperties extends RedisProperties {
 		}
 		public void setHost(String host) {
 			this.host = host;
-		}
-		public int getPort() {
-			return port;
-		}
-		public void setPort(int port) {
-			this.port = port;
 		}
 		public String getPassowrd() {
 			return passowrd;

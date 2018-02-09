@@ -52,9 +52,8 @@ jdbc:
 spring:
   redis:
     sharding:
-      - host: "192.168.4.117"
-        port: 6379
+      - host: "redis://127.0.0.1:6379/0"
 #        password: "123456"
-      - host: "192.168.4.117"
-        port: 6379
+      - host: "redis://127.0.0.1:6379/1"
+      - host: "redis://127.0.0.1:6379/2"
   
