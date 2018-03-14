@@ -1,10 +1,10 @@
 #!/bin/bash
-cd `dirname $0`
+cd `dirname $0`/..
 
-APP_DIR=../lib
+APP_DIR=./lib
 APP_NAME="${project.build.finalName}.${project.packaging}"
 
-PID_FILE="${runtime.pidfile}"
+PID_FILE="./pid"
 
 if [ -f "$PID_FILE" ]; then
     PID=`cat "$PID_FILE"`

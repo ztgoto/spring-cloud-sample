@@ -328,6 +328,15 @@
 						<finalName>${project.artifactId}-${project.version}-${maven.build.timestamp}</finalName>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+	        		<artifactId>maven-jar-plugin</artifactId>
+	        		<configuration>
+	        			<excludes>
+	        				<exclude>config/**</exclude>
+	        			</excludes>
+	        		</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>

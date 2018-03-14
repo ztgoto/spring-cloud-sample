@@ -1,15 +1,16 @@
 #!/bin/bash
-cd `dirname $0`
+cd `dirname $0`/..
 
-APP_DIR=../lib
-CONFIG_FILE=${spring.config.location}
-LOG_DIR=${logging.path}
+APP_DIR=./lib
+# CONFIG_FILE=${spring.config.location}
+# LOG_DIR=${logging.path}
 
 APP_NAME="${project.build.finalName}.${project.packaging}"
 # SERVER_PORT="${equipment.server.port}"
-PID_FILE="${runtime.pidfile}"
+# PID_FILE="${runtime.pidfile}"
+PID_FILE="./pid"
 
-PROFILES=${spring.profiles.active}
+# PROFILES=${spring.profiles.active}
 
 DEBUG_PARAM=""
 
@@ -27,7 +28,7 @@ if [ "debug" = "$1" ]; then
 
     DEBUG_PARAM="-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=$DEBUG_PORT,suspend=n"
 elif [ "printGC" = "$1" ]; then
-    GC_PARAM="-XX:+PrintGCDetails -Xloggc:$LOG_DIR/gc.log -XX:+PrintGCTimeStamps"
+    GC_PARAM="-XX:+PrintGCDetails -Xloggc:./gc.log -XX:+PrintGCTimeStamps"
 fi
 
 for p in "$@"; do
@@ -36,8 +37,6 @@ for p in "$@"; do
    fi; 
 done;
 
-
-PID_FILE="${runtime.pidfile}"
 
 if [ -f "$PID_FILE" ]; then
     PID=`cat "$PID_FILE"`
@@ -82,7 +81,7 @@ fi
 
 echo -e "Starting the $APP_NAME ...\n"
 # nohup java $DEBUG_PARAM $GC_PARAM $JAVA_MEM_OPTS -jar $APP_DIR/$APP_NAME --spring.config.location=$CONFIG_FILE > /dev/null 2>&1 & 
-nohup java $DEBUG_PARAM $GC_PARAM $JAVA_MEM_OPTS -jar $APP_DIR/$APP_NAME --spring.config.location=$CONFIG_FILE --spring.profiles.active=$PROFILES $APP_PARAMS > /dev/null 2>&1 &   
+nohup java $DEBUG_PARAM $GC_PARAM $JAVA_MEM_OPTS -jar $APP_DIR/$APP_NAME $APP_PARAMS > /dev/null 2>&1 &   
 
 
 PIDS=`ps -f | grep java | grep "$APP_NAME" | awk '{print $2}'`
