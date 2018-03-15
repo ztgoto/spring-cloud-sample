@@ -16,7 +16,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.SimpleCommandLinePropertySource;
 import org.springframework.util.StringUtils;
 
 @EnableEurekaServer
@@ -39,15 +38,15 @@ public class Run {
 	public static void main(String[] args) throws UnknownHostException {
 		long begin = System.currentTimeMillis();
 
-		SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
+//		SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
 
 		SpringApplication app = new SpringApplication(Run.class);
 
 		// 采用命令启动时如没有设置启动环境，则设置默认启动环境
-		if (!source.containsProperty("spring.profiles.active") && !System.getenv().containsKey("SPRING_PROFILES_ACTIVE")
-				&& StringUtils.isEmpty(System.getProperty("spring.profiles.active"))) {
-			app.setAdditionalProfiles(SPRING_PROFILE_LOCALHOST);
-		}
+//		if (!source.containsProperty("spring.profiles.active") && !System.getenv().containsKey("SPRING_PROFILES_ACTIVE")
+//				&& StringUtils.isEmpty(System.getProperty("spring.profiles.active"))) {
+//			app.setAdditionalProfiles(SPRING_PROFILE_LOCALHOST);
+//		}
 
 		ConfigurableApplicationContext context = app.run(args);
 
