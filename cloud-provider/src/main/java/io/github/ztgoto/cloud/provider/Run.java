@@ -27,7 +27,7 @@ public class Run {
 	static final Logger LOGGER = LoggerFactory.getLogger(Run.class);
 
 	// Spring profile
-	public static final String SPRING_PROFILE_LOCALHOST = "local";
+//	public static final String SPRING_PROFILE_LOCALHOST = "local";
 	public static final String SPRING_PROFILE_DEVELOPMENT = "dev";
 	public static final String SPRING_PROFILE_TEST = "test";
 	public static final String SPRING_PROFILE_PRODUCTION = "prod";

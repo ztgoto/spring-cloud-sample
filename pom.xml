@@ -197,28 +197,10 @@
 
 	<profiles>
 		<profile>
-			<id>local</id>
-
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-
-			<properties>
-				<spring.profiles.active>local</spring.profiles.active>
-				<spring.config.location>classpath:/config/</spring.config.location>
-				<logging.config>classpath:config/log4j2.xml</logging.config>
-				<logging.path>./logs</logging.path>
-			</properties>
-		</profile>
-
-		<profile>
 			<id>dev</id>
 
 			<properties>
 				<spring.profiles.active>dev</spring.profiles.active>
-				<spring.config.location>file:../config/</spring.config.location>
-				<logging.config>file:../config/log4j2.xml</logging.config>
-				<logging.path>../logs</logging.path>
 			</properties>
 
 		</profile>
@@ -228,9 +210,6 @@
 
 			<properties>
 				<spring.profiles.active>test</spring.profiles.active>
-				<spring.config.location>file:../config/</spring.config.location>
-				<logging.config>file:../config/log4j2.xml</logging.config>
-				<logging.path>../logs</logging.path>
 			</properties>
 		</profile>
 
@@ -239,9 +218,6 @@
 
 			<properties>
 				<spring.profiles.active>fast</spring.profiles.active>
-				<spring.config.location>file:../config/</spring.config.location>
-				<logging.config>file:../config/log4j2.xml</logging.config>
-				<logging.path>../logs</logging.path>
 			</properties>
 		</profile>
 
@@ -250,9 +226,6 @@
 
 			<properties>
 				<spring.profiles.active>prod</spring.profiles.active>
-				<spring.config.location>file:../config/</spring.config.location>
-				<logging.config>file:../config/log4j2.xml</logging.config>
-				<logging.path>../logs</logging.path>
 			</properties>
 		</profile>
 	</profiles>

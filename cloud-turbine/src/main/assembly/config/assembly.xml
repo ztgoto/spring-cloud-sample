@@ -27,7 +27,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>./config</outputDirectory>
-            <directory>src/main/resources/config</directory>
+            <directory>src/main/resources/config/${spring.profiles.active}</directory>
             <filtered>true</filtered>
         </fileSet>
         <!-- <fileSet>
