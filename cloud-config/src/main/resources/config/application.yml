@@ -64,7 +64,41 @@ spring:
 #              pattern: local*
 #              uri: file:/home/configsvc/config-repo
 #  rabbitmq:
-#    host: rabbitmq
+#    host: "192.168.4.137"
+#    port: 5672
+#    username: guest
+#    password: guest
+#  cloud:
+#    stream:
+#      instance-count: 3
+#      instance-index: 0
+#      bindings:
+#        inputMessage:
+#          destination: test_input_message
+#          group: test
+#          binder: kafka1
+#          content-type: ""
+#          consumer:
+#            partitioned: true
+#          producer:
+#            partitionKeyExpression: payload.msg
+#        outputMessage:
+#          destination: test_input_message
+#        inputEvent:
+#          destination: test_input_event
+#        outputEvent:
+#          destination: test_input_event
+#      binders:
+#        kafka1:
+#          type: kafka
+#          environment:
+#            spring:  
+#              cloud:  
+#                stream:  
+#                  kafka:  
+#                    binder:  
+#                      brokers: name87:9094  
+#                      zkNodes: name85:2181,name86:2181,name87:2181/kafka0101  
 
 #spring:
 #  cloud:

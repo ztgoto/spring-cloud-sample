@@ -7,7 +7,7 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 logging:
-  config: "classpath:config/log4j2.xml"
+  config: "file:./config/log4j2.xml"
   
 server:
   port: 8090
@@ -24,7 +24,7 @@ security:
     password: admin
 
 eureka:
-  environment: "local"
+  environment: "test"
   instance:
     hostname: 127.0.0.1
     prefer-ip-address: true
